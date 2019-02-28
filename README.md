@@ -79,6 +79,11 @@ Procedure
 5. You should see logs on the command line/terminal of your server that tells you the port on which the server is running on, and a database connection instance status.
 6. To interact with the server will follow our earlier on stated routes, only that the BaseURL will change to the Ip address of the server: example my_server_ip_address:my_port(xxx.xxx.x.xxx:4200)
 
+***********************************************************************************************************************
+Note: To keep your server running even when you close the ssh session, run command: node my_server_directory app.js &
+**********************************************************************************************************************
+
+
 
 
   ***********************************************************************************************************************
