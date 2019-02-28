@@ -55,15 +55,44 @@ Note* ( For endpoints BaseUrl/user || & BaseUrl/users/update/:id)
                            *******************************
 
 Future Works
-1. Remote server Deployment(To upload a deployment guidelines document soon on github repo soon).
+1. Creating a simple angular project to interact with the server..
 2. More Endpoints for more database operations.
 
+
+                                REMOTE SERVER DEPLOYMENT
+                  
+
+Requirements
+
+1. A server: remote server(worked with ubuntu)
+2. git installed on server
+3. node installed on server(ubuntu command: sudo apt install nodejs)
+4. npm installed on server(ubunti command: sudo apt install npm)
+5. May require a domain pointing to the sever
+
+Procedure
+
+1. Clone the repo of this project onto your server(on any directory)
+2. Use the database dump file in the database folder to import the database into your database.
+3. Change the database connection on the dbcon.js file found on the config folder of this project.
+4. Outside of the folder of this project, run the command: node node-server - this will start the server.
+(Note that node-server is the name of this project folder, if you change yours, remember to run the command accordingly: example node my_server_folder_name)
+5. You should see logs on the command line/terminal of your server that tells you the port on which the server is running on, and a database connection instance status.
+6. To interact with the server will follow our earlier on stated routes, only that the BaseURL will change to the Ip address of the server: example my_server_ip_address:my_port(xxx.xxx.x.xxx:4200)
+
+
+
+  ***********************************************************************************************************************
+  I hope you found this helpfull. Continue to learn and let us learn together..
+  ***********************************************************************************************************************
+                  
 
                            *********************************
              If you need any help, be sure to halla at muindegeofrey@gmail.com
 
  
 
+                       
 
 
 
