@@ -37,9 +37,9 @@ Making the calls
 Note: BaseUrl = localhost:4200 || localhost:the_port_you_set.
 *************************************************************************************************************************
 
-Type    Data         URL                          Function                                   Examples                 
+Type  **  Data     **    URL                     **     Function                      **             Examples                 
 
-GET                 BaseUrl/users                  Get all users in the database                localhost:4200/users  
+GET   **            BaseUrl/users          **      Get all users in the database    **          localhost:4200/users  
 GET     id(int)     BaseUrl/users/{id}             Get a certain user by id                     localhost:4200/users/1
 POST                BaseUrl/users/add              Create a new user                            Refer to screenshots. 
 DELETE  id(int)     BaseUrl/users/{id}             Delete a certain user by their id            localhost:4200/users/1
