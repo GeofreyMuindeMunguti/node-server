@@ -1,7 +1,8 @@
- 
+const fs = require('fs');
 var usersApi = function (app)
 {
 var logs =[];
+var timestamp;
 
   var connection = require("../config/dbcon.js");
   
@@ -13,8 +14,9 @@ var logs =[];
        connection.query("SELECT id , name   FROM testtb",(err, res)=>
        { 
          if (err) throw err;
+         gettime();
          console.log("API/USERS/GET/");
-         logs.push("200","API/USERS/GET/");
+         logs.push(timestamp+"200","API/USERS/GET/");
          result.send(res);
        });
        
@@ -28,8 +30,9 @@ var logs =[];
        connection.query("SELECT id , name   FROM testtb where id="+req.params.id, (err, res)=>
        { 
          if (err) throw err;
+         gettime();
          console.log("API/USERS/GET/:ID");
-         logs.push("200","API/USERS/GET/:ID");
+         logs.push(timestamp+"200","API/USERS/GET/:ID");
          result.send(res);
        });
        
@@ -42,8 +45,9 @@ var logs =[];
        connection.query("DELETE FROM testtb WHERE id="+req.params.id, (err, res)=>
        { 
          if (err) throw err;
+         gettime();
          console.log("API/USERS/DELETE/");
-         logs.push("200","API/USERS/DELETE/");
+         logs.push(timestamp+"200","API/USERS/DELETE/");
          result.send("Deleted record..");
        });
        
@@ -63,9 +67,10 @@ var logs =[];
        {
          if (err) throw err;
          else
+         gettime();
          result.send("Added record successfully");
          console.log("API/USERS/POST/")
-         logs.push("200","API/USERS/POST/");
+         logs.push(timestamp+"200","API/USERS/POST/");
           
        });
         
@@ -87,9 +92,10 @@ var logs =[];
        {
          if (err) throw err;
          else
+         gettime();
          result.send("Updated record successfully");
          console.log("API/USERS/UPDATE/")
-         logs.push("200","API/USERS/UPDATE/");
+         logs.push(timestamp+"200","API/USERS/UPDATE/");
           
        });
         
@@ -98,12 +104,36 @@ var logs =[];
       //view all logs made on the server..
        
       app.get("/logs", (req, result)=>
-       {
+       {  createlogs();
          result.send(logs);
          console.log(logs);
        });
 
-       
+       function gettime()
+       {
+         var date = new Date();
+         var year = date.getFullYear().toString();
+         var getmon = date.getMonth()+1;
+         var month = getmon.toString();
+         var day = date.getDate().toString();
+         var daymonthyear = day+"/"+month+"/"+year;
+
+         var hours = date.getHours().toString();
+         var minutes = date.getMinutes().toString();
+         var seconds = date.getSeconds().toString();
+         var time = hours+":"+minutes+":"+seconds;
+
+           
+         timestamp = daymonthyear+":"+time;
+       }
+      function createlogs()
+      {
+           fs.writeFile('./logs/logs.txt', logs, (err) => {  
+            if (err) throw err;
+            console.log('Logs saved!');
+        });
+       }
+
 }
     
 module.exports= usersApi;
